@@ -1,0 +1,274 @@
+<apex:page controller="SRS_Data_Controller" docType="html-5.0" standardStylesheets="false" sidebar="false" showHeader="true">
+
+<apex:stylesheet value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/css/bootstrap.min.css')}"/>
+<apex:stylesheet value="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css"/>
+ <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"/>
+ <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-sanitize.min.js"/>
+ <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.js"/>
+ <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" />
+<apex:includeScript value="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" />
+
+ <apex:includeScript value="{!URLFOR($Resource.Rangy, "/rangy-1.2.3/rangy-core.js")}"/>
+ <apex:includeScript value="{!URLFOR($Resource.Rangy, "/rangy-1.2.3/rangy-selectionsaverestore.js")}"/>
+ <apex:includeScript value="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular.min.js"/>
+ <apex:includeScript value="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular-sanitize.min.js"/>
+
+            <style>
+                .input-mysize { width: 550px }
+                .search-query {
+                padding-left: 469px;
+                background-repeat: no-repeat;
+                background-position: 562px 8px;
+                }
+
+                .ta-editor {
+                min-height: 300px;
+                height: auto;
+                overflow: auto;
+                font-family: inherit;
+                font-size: 100%;
+                border-size:2px;
+                }
+
+                .content{
+                  background-color: light-blue;
+                }
+                .logoSpacer{
+                  width: 100%;
+                }
+
+                .tabborder{
+                  border:1px;
+                  border-color:blue;
+                }
+
+                .rcorners2 {
+                    border-radius: 5px;
+                    border: 1px solid #337ab7;
+                    padding: 20px;
+                }
+
+                .red .active a,
+                .red .active a:hover {
+                    background-color: red;
+                }
+
+                .nav-pills > .active > a, .nav-pills > .active > a:hover {
+                    background-color: red;
+                }
+
+            </style>
+
+          <!-- =========== Binding Controller to Body of Page ============= -->
+            <div ng-app="SRSDataCollector" ng-controller="contrl" class="container app" >
+              <div class="page-header">
+            <br />
+              <apex:image url="{!URLFOR($Resource.SRSLogo)}"/>
+            </div>
+
+            <div class="alert alert-info fade in" id="msgBoxContainer">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <div id="msgBox">.</div>
+            </div>
+
+<div>
+
+        <div class="col-md-3">
+          <ul class="nav nav-pills nav-stacked">
+            <li ng-repeat="y in items" class="{{getActive(y.Sort_Order__c)}}"><a href="#{{y.Sort_Order__c}}" data-toggle="pill">{{y.Content__c}}</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-9 rcorners2">
+          <div class="tab-content">
+
+          <div ng-repeat="z in items" id="{{z.Sort_Order__c}}" class="tab-pane fade {{getActiveTab(z.Sort_Order__c)}}">
+            <div >
+                      <h1 class="Title" width="70%">{{z.Section__c}}</h1>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                      Learn from <a href="www.coursera.org"><apex:image url="{!URLFOR($Resource.Coursera)}" /></a></div>
+                      <hr />
+
+
+                <h3>{{z.Content__c}}</h3>
+
+
+                   <div ng-repeat="x in z.Page_Question__r">
+
+                <div >{{x.Question_Text__c}}
+                </div>
+                <br /> <br />
+                <text-angular name="textAngular-{{z.Id}}{{$index}}" ng-model="x.Answer__c" ta-disabled="disabled">
+
+                  </text-angular>
+                <br /> <br />
+                <!--    textarea ng-model="x.Page_Text__c" style="width: 100%"></textarea-->
+              </div>
+
+            <br /><br />
+            <div class="pagination  pull-right">
+
+                    <div >
+                      <input type="button" class="btn btn-info" ng-click="viewReport()" value="View Report" id="btnViewReport" />
+                      &nbsp;
+                      <input type="button" class="btn btn-info" ng-click="prevPage(z.Sort_Order__c)" value="Previous" id="btnPrev"/>
+                      &nbsp;
+                      <input type="button" class="btn btn-info" ng-click="nextPage(z.Sort_Order__c)" value="Next" id="btnNext" />
+                      &nbsp;
+
+                      <input type="button" class="btn btn-info" ng-click="saveReport()" value="Save" />
+                    </div>
+                  </div>
+                  </div>
+            </div>
+          </div>
+</div>
+    <hr />
+    <p style="text-align:center;"><small>Created by <a href="www.khyateh.com">Khyateh</a></small></p>
+  </div>
+    <!--- Javascript -->
+    <script type="text/javascript">
+    <!-- Name your application -->
+        var myapp = angular.module("SRSDataCollector", ["ngRoute","textAngular", "ngSanitize"]);
+
+
+    <!-- Define Controller  -->
+        var contrl=myapp.controller("contrl", function ($scope,  $location, $sce, $interval, $window) {
+              $scope.currentPage = 0;
+              $scope.reportName = "";
+              $scope.reportDesc = "";
+                $scope.reportId =  $location.absUrl().split('ReportId=')[1].split('#')[0];
+              $scope.pagedItems = "";
+              $scope.templateName = "";
+
+              
+              $scope.getActive = function(index){
+                if(index == '1')
+                  return ' active';
+              };
+
+              $scope.getActiveTab = function(index){
+                if(index == '1')
+                  return ' in active';
+              };
+
+
+              $scope.getQuestions = function(){
+                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.SRS_Data_Controller.getAllQuestions}',
+                  $scope.reportId, function(result, event) {
+                  if(event.status)
+                  {
+                    $scope.items = result;
+                    $scope.$apply();
+
+                    if($scope.items != null)
+                    {
+                      $scope.pagedItems = $scope.items[$scope.currentPage];
+                      $scope.$apply();
+                    }
+                  }
+                  else if(event.type == "exception")
+                  {
+                    alert(event.message);
+                  }
+                }, {escape: false});
+              };
+
+              $scope.saveReport = function(){
+
+                var sJson = angular.toJson($scope.items);
+                SRS_Data_Controller.saveAnswers(sJson, $scope.reportName, $scope.reportId, $scope.reportDesc,
+              function(result, event){
+                if(event.status)
+                {
+                  console.log("Report saved");
+                  $scope.alertMe("Report saved");
+                }
+                else if(event.type == "exception")
+                {
+                  $scope.alertMe(event.message);
+                }
+              }
+              )};
+
+              $scope.range = function (start, end) {
+                  var ret = [];
+                  if (!end) {
+                      end = start;
+                      start = 0;
+                  }
+                  for (var i = start; i < end; i++) {
+                      ret.push(i);
+                  }
+                  return ret;
+              };
+
+              $scope.prevPage = function (id) {
+                var nextId = id - 1;
+                if(nextId >= 1)
+                {
+                  $('#btnNext').disabled = false;
+                    $('[href=#'+nextId+']').tab('show');
+                }
+                else
+                {
+                  $('#btnPrev').disabled = true;
+                }
+              };
+
+              $scope.nextPage = function (id) {
+              //    $scope.saveReport();
+                var nextId = id +1;
+                if(nextId <= $scope.items.length)
+                {
+                  $('#btnPrev').disabled = false;
+                  $('[href=#'+nextId+']').tab('show');
+                }
+                else
+                {
+                  $('#btnNext').disabled = true;
+                  //$('#btnViewReport').style.visibility = 'visible';
+                }
+              };
+
+              $scope.viewReport = function()
+              {
+                $window.location.href="/apex/ViewSRSReport?ReportId=" + $scope.reportId;
+              };
+
+              $scope.decode = function(html) {
+                var txt = document.activeElement();
+                txt.innerHTML = html;
+                return txt.value;
+              };
+
+            $scope.alertMe = function(msg){
+              console.log($("#msgBox"));
+              document.getElementById("msgBox").innerHTML = msg;
+              $("#msgBoxContainer").show();
+
+            };
+
+
+            $scope.getQuestions();
+            $("#msgBoxContainer").hide();
+
+            var autoSave = $interval($scope.saveReport, 120000);
+
+      });
+
+
+
+      myapp.filter('unsafe', function($sce) {
+        return function(val) {
+          val = $sce.trustAsHtml(val);
+          alert(val);
+            return val;
+        };
+      });
+
+
+    </script>
+</apex:page>
