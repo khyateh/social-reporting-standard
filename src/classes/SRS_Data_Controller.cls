@@ -315,22 +315,6 @@ Question JSON:
       return mapQA;
     }
 
-    private static void consumeObject(JSONParser parser)
-    {
-      Integer depth = 0;
-      do {
-        JSONToken curr = parser.getCurrentToken();
-        if (curr == JSONToken.START_OBJECT ||
-          curr == JSONToken.START_ARRAY) {
-          depth++;
-        } else if (curr == JSONToken.END_OBJECT ||
-          curr == JSONToken.END_ARRAY) {
-          depth--;
-        }
-      } while (depth > 0 && parser.nextToken() != null);
-    }
-
-
 /*Fetch the details of SRS reports for the given Report Id */
     @RemoteAction
     global static List<Report_Details__c> fetchReportDetails(string reportId)
