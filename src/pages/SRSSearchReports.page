@@ -7,6 +7,8 @@
 <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-sanitize.min.js"/>
 <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" />
 <apex:includeScript value="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" />
+<apex:includeScript value="{!URLFOR($Resource.SRS, "/js/SRSSearchReports.js")}"/>
+
 <style>
 		.input-mysize { width: 550px }
 		.search-query {
@@ -113,84 +115,4 @@
 <p style="text-align:center;"><small>Created by <a href="www.khyateh.com">Khyateh</a></small></p>
 
 </div><!-- container Div -->
-
-<!--- Javascript -->
-<script type="text/javascript">
-<!-- Name your application -->
-		var myapp = angular.module("SRSReportSearchApp", ["ngSanitize"]);
-
-<!-- Define Controller  -->
-		var reportController=myapp.controller("reportSearchController",function ($scope, $location, $sce, $window) {
-					$scope.currentPage = 0;
-					$scope.reportName = "";
-					$scope.reportDesc = "";
-					$scope.reportId = "";
-					$scope.pagedItems = "";
-					$scope.searchString = "";
-
-					$scope.setTemplateId = function(id)
-					{
-						$scope.reportId = id;
-						console.log('Template applied: ' + $scope.reportId);
-					};
-
-				$scope.searchReports = function(){
-
-						kh_srs.SRS_Data_Controller.searchReports($scope.searchString, function(result, event) {
-								$('#login-error').innerHtml = "Hello";
-								$('#login-error').show();
-
-							if(event.status)
-							{
-								$scope.items = result;
-								$scope.$apply();
-							}
-							else if(event.type == "exception")
-							{
-								showInfo(event.message, true);
-							}
-						});
-					};
-
-
-				$scope.searchReports();
-
-				$scope.createFromTemplate = function(){
-					kh_srs.SRS_Data_Controller.createFromTemplate($scope.reportId,$scope.reportName, $scope.reportDesc, function(result, event) {
-					if(event.status)
-					{
-						//Redirect to SRS Data Collector
-						$scope.items = result;
-						$scope.$apply();
-						$window.location.href="/apex/SRS_Data_Collector?ReportId=" + result;
-					}
-					else if(event.type == "exception")
-					{
-						console.log(event.message);
-					}
-				});
-				};
-
-				$scope.decode = function(html) {
-					var txt = document.createElement("textarea");
-					txt.innerHTML = html;
-					return txt.value;
-				};
-	});
-
-function showInfo(msg, isError)
-{
-	alert($("#srsMsg"));
-	//var el = document.getElementById("srsMsg");
-	$("#srsMsg").innerHTML = "<br/>" + msg +"<br/>";
-
-};
-
-$('.alert .close').on('click', function(e) {
-		$(this).parent().hide();
-});
-
-$.ready(function(){console.log("Loaded")});
-
-</script>
 </apex:page>
