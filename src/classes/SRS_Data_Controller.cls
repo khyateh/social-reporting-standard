@@ -259,13 +259,13 @@ Question JSON:
           text = parser.getText();
           if (parser.nextValue() != JSONToken.VALUE_NULL)
           {
-            if(text == 'Section__c')
+            if(text == 'kh_srs__Section__c')
             {
               section = parser.getText();
               //System.debug('Parse successful: ' + section);
               parser.nextValue();
             }
-            if (text == 'Page_Question__r')
+            if (text == 'kh_srs__Page_Question__r')
             {
               lstQuestions = (List<Page_Question__c>)parser.readValueAs(List<Page_Question__c>.class);
 
