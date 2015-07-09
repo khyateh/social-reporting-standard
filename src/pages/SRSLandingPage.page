@@ -32,7 +32,7 @@
 	</div>
 	<div class="col-sm-6">
 		<h2>Input Output Outcome Impact approach</h2><br /><br />
-		<apex:image url="{!URLFOR($Resource.SRSOverall)}" width="500" height="300"/>
+		<apex:image url="{!URLFOR($Resource.SRS, 'img/SRSOverall.png')}" width="500" height="300"/>
 	</div>
 </div>
 	<hr />
