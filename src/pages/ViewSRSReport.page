@@ -26,7 +26,9 @@
 		}
 .page-title {
 	align : center;
-	background-color : #444444;
+	background-color : #AAAAAA;
+	font-family: inherit;
+	font-size: 20px;
 }
 
 </style>
@@ -44,11 +46,11 @@
 
 
 	<div ng-repeat="x in items">
-<div class="page-title" ng-bind="getSection(x.Section__c)"><br /><br /></div>
+<div class="page-title bold" ng-bind="getSection(x.kh_srs__Section__c)"><br /><br /></div>
 
-<div><h3>{{x.Subsection__c}}</h3></div>
+<div><h3>{{x.kh_srs__Subsection__c}}</h3></div>
 	<br />
-<p ng-bind-html="decode(x.Content__c)" />
+<p ng-bind-html="decode(x.kh_srs__Content__c)" />
 	<br />
 </div>
 
@@ -86,7 +88,7 @@
 
 					$scope.fetchReport = function(){
 
-								SRS_Data_Controller.fetchReportById($scope.reportId, function(result, event) {
+							kh_srs.SRS_Data_Controller.fetchReportById($scope.reportId, function(result, event) {
 								if(event.status)
 								{
 									$scope.report = result;
@@ -102,7 +104,7 @@
 
 				$scope.fetchReportDetails = function(){
 
-							SRS_Data_Controller.fetchReportDetails($scope.reportId, function(result, event) {
+						kh_srs.SRS_Data_Controller.fetchReportDetails($scope.reportId, function(result, event) {
 							if(event.status)
 							{
 								$scope.items = result;

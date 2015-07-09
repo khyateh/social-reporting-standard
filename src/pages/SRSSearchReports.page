@@ -136,7 +136,7 @@
 
 				$scope.searchReports = function(){
 
-							SRS_Data_Controller.searchReports($scope.searchString, function(result, event) {
+						kh_srs.SRS_Data_Controller.searchReports($scope.searchString, function(result, event) {
 								$('#login-error').innerHtml = "Hello";
 								$('#login-error').show();
 
@@ -156,7 +156,7 @@
 				$scope.searchReports();
 
 				$scope.createFromTemplate = function(){
-					SRS_Data_Controller.createFromTemplate($scope.reportId,$scope.reportName, $scope.reportDesc, function(result, event) {
+					kh_srs.SRS_Data_Controller.createFromTemplate($scope.reportId,$scope.reportName, $scope.reportDesc, function(result, event) {
 					if(event.status)
 					{
 						//Redirect to SRS Data Collector
