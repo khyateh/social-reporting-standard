@@ -36,7 +36,8 @@
 <!-- =========== Binding Controller to Body of Page ============= -->
 <div ng-app="SRSReportSearchApp" ng-controller="reportSearchController" class="container app" >
 	<div class="page-header">
-		<apex:image url="{!URLFOR($Resource.SRSLogo)}"/><br /><br />
+		<apex:image url="{!URLFOR($Resource.SRS,'img/SRSLogo.jpg')}"/>
+		<br /><br />
 
 
 	<h2>Search Reports</h2>

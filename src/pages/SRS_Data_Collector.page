@@ -64,7 +64,7 @@
             <div ng-app="SRSDataCollector" ng-controller="contrl" class="container app" >
               <div class="page-header">
             <br />
-              <apex:image url="{!URLFOR($Resource.SRSLogo)}"/>
+              <apex:image url="{!URLFOR($Resource.SRS,'img/SRSLogo.jpg')}"/>
             </div>
 
             <div class="alert alert-info fade in" id="msgBoxContainer">
@@ -89,7 +89,7 @@
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                      Learn from <a href="www.coursera.org"><apex:image url="{!URLFOR($Resource.Coursera)}" /></a></div>
+                      Learn from <a href="www.coursera.org"><apex:image url="{!URLFOR($Resource.SRS, 'img/Coursera.png')}" /></a></div>
                       <hr />
 
 

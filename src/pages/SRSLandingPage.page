@@ -8,7 +8,8 @@
 .pg { margin-left: 40px; }
 </style>
 	<div class="visualstrap container page-header">
-		<apex:image url="{!URLFOR($Resource.SRSLogo)}"/><br /><br />
+		<apex:image url="{!URLFOR($Resource.SRS,'img/SRSLogo.jpg')}"/>
+		<br /><br />
 		The SRS helps charitable and social organizations of every legal form and size to report on their social commitment. With a common language and an easy to follow structure, the SRS helps to facilitate discussions regarding the impact and results of an organizations work. The SRS systematically covers all relevant organizational and financial information, which makes it a suitable format for both an organizations external and internal annual reporting. By reporting and communicating results, organizations can help promote results-based reflection and a learning culture.
 		<br/><br/>
 		More details are available <a href="http://www.social-reporting-standard.de/en/">here</a>
