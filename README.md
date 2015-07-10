@@ -5,10 +5,6 @@ More details are available at http://www.social-reporting-standard.de/en/
 # SRS-SFDC
 SRS is a Salesforce application that helps create Social reporting standard reports inside your Salesforce Org (http://www.salesforce.com)
 
-##Install instructions
-In order to install the unmanaged demo application, please click on the following URL and log into Salesforce org (or create a free developer organisation at http://developer.salesforce.com)  as administrator and follow through the install instructions.
-#####Unmanaged Demo Installation URL :
-https://login.salesforce.com/packaging/installPackage.apexp?p0=04t28000000HsaD
 
 ##Open source credits
 SRS for Salesforce has been implemented with the help of the following Open source projects.
