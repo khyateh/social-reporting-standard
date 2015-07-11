@@ -2,7 +2,7 @@
 <apex:stylesheet value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/css/bootstrap.min.css')}"/>
 <apex:stylesheet value="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css"/>
 
-<apex:form>
+<apex:form >
 <div class="container" >
   <div class="page-header">
     <apex:image url="{!URLFOR($Resource.SRS,'img/SRSLogo.jpg')}"/>

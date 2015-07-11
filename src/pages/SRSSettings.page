@@ -1,0 +1,21 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>SRS Settings</h1>
+  <p>
+  Language &nbsp;
+  <Select id="language">
+  <option>English</option>
+<option>German</option>
+<option>French</option>
+  <option>Spanish</option>
+
+  </Select>
+  <br /><br />
+  Link to Coursera &nbsp;<input type="text" id="lnkCoursera" /> <br /><br />
+  Link to Twitter &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="lnkTwitter" /> <br /><br />
+  Link to Youtube &nbsp;&nbsp;&nbsp;<input type="text" id="lnkYoutube" /> <br /><br />
+  Report Format &nbsp; <select id="reportFormat"><option>One Column</option><option>Two Column</option> </select>
+  
+  </p> 
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>
