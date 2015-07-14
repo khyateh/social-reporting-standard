@@ -48,11 +48,11 @@
 
 
 	<div ng-repeat="x in items">
-<div class="page-title bold" ng-bind="getSection(x.kh_srs__Section__c)"><br /><br /></div>
+<div class="page-title bold" ng-bind="getSection(x.khsrs__Section__c)"><br /><br /></div>
 
-<div><h3>{{x.kh_srs__Subsection__c}}</h3></div>
+<div><h3>{{x.khsrs__Subsection__c}}</h3></div>
 	<br />
-<p ng-bind-html="decode(x.kh_srs__Content__c)" />
+<p ng-bind-html="decode(x.khsrs__Content__c)" />
 	<br />
 </div>
 

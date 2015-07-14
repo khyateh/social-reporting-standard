@@ -76,16 +76,16 @@
 
         <div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
-            <li ng-repeat="y in items" class="{{getActive(y.kh_srs__Sort_Order__c)}}"><a href="#{{y.kh_srs__Sort_Order__c}}" data-toggle="pill">{{y.kh_srs__Content__c}}</a></li>
+            <li ng-repeat="y in items" class="{{getActive(y.khsrs__Sort_Order__c)}}"><a href="#{{y.khsrs__Sort_Order__c}}" data-toggle="pill">{{y.khsrs__Content__c}}</a></li>
           </ul>
         </div>
 
         <div class="col-md-9 rcorners2">
           <div class="tab-content">
 
-          <div ng-repeat="z in items" id="{{z.kh_srs__Sort_Order__c}}" class="tab-pane fade {{getActiveTab(z.kh_srs__Sort_Order__c)}}">
+          <div ng-repeat="z in items" id="{{z.khsrs__Sort_Order__c}}" class="tab-pane fade {{getActiveTab(z.khsrs__Sort_Order__c)}}">
             <div >
-                      <h1 class="Title" width="70%">{{z.kh_srs__Section__c}}</h1>
+                      <h1 class="Title" width="70%">{{z.khsrs__Section__c}}</h1>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -93,15 +93,15 @@
                       <hr />
 
 
-                <h3>{{z.kh_srs__Content__c}}</h3>
+                <h3>{{z.khsrs__Content__c}}</h3>
 
 
-                   <div ng-repeat="x in z.kh_srs__Page_Question__r">
+                   <div ng-repeat="x in z.khsrs__Page_Question__r">
 
-                <div >{{x.kh_srs__Question_Text__c}}
+                <div >{{x.khsrs__Question_Text__c}}
                 </div>
                 <br /> <br />
-                <text-angular name="textAngular-{{z.Id}}{{$index}}" ng-model="x.kh_srs__Answer__c" ta-disabled="disabled">
+                <text-angular name="textAngular-{{z.Id}}{{$index}}" ng-model="x.khsrs__Answer__c" ta-disabled="disabled">
 
                   </text-angular>
                 <br /> <br />
@@ -114,9 +114,9 @@
                     <div >
                       <input type="button" class="btn btn-info" ng-click="viewReport()" value="View Report" id="btnViewReport" />
                       &nbsp;
-                      <input type="button" class="btn btn-info" ng-click="prevPage(z.kh_srs__Sort_Order__c)" value="Previous" id="btnPrev"/>
+                      <input type="button" class="btn btn-info" ng-click="prevPage(z.khsrs__Sort_Order__c)" value="Previous" id="btnPrev"/>
                       &nbsp;
-                      <input type="button" class="btn btn-info" ng-click="nextPage(z.kh_srs__Sort_Order__c)" value="Next" id="btnNext" />
+                      <input type="button" class="btn btn-info" ng-click="nextPage(z.khsrs__Sort_Order__c)" value="Next" id="btnNext" />
                       &nbsp;
 
                       <input type="button" class="btn btn-info" ng-click="saveReport()" value="Save" />
