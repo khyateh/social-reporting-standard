@@ -59,7 +59,7 @@ lstPageQuestion.add(question);
 
 //-------------
 //Insert Page Text - Plan_Forecast
-pgText = new Page_Text__c(name='Plan_Forecast',Section__c='Part B - The Offer',Content__c='Planning and Forecast',Sort_Order__c=4);
+pgText = new Page_Text__c(name='Plan_Forecast',Section__c='Part B - The Offer',Content__c='Planning and Forecast',Sort_Order__c=4, Version__c=1);
 lstPageText.add(pgText);
 
 //Insert related Page_Questions
@@ -71,7 +71,7 @@ lstPageQuestion.add(question);
 
 //-------------
 //Insert Page Text - Org_Struct
-pgText = new Page_Text__c(name='Org_Struct',Section__c='Part B - The Offer',Content__c='Organisational structure and Team',Sort_Order__c=5);
+pgText = new Page_Text__c(name='Org_Struct',Section__c='Part B - The Offer',Content__c='Organisational structure and Team',Sort_Order__c=5, Version__c=1);
 lstPageText.add(pgText);
 
 //Insert related Page_Questions
@@ -86,7 +86,7 @@ lstPageQuestion.add(question);
 
 //-------------
 //Insert Page Text - Org_Profile
-pgText = new Page_Text__c(name='Org_Profile',Section__c='Part C - The Organization',Content__c='Organisational profile',Sort_Order__c=6);
+pgText = new Page_Text__c(name='Org_Profile',Section__c='Part C - The Organization',Content__c='Organisational profile',Sort_Order__c=6, Version__c=1);
 lstPageText.add(pgText);
 
 //Insert related Page_Questions
@@ -104,7 +104,7 @@ lstPageQuestion.add(question);
 
 //-------------
 //Insert Page Text - Finance
-pgText = new Page_Text__c(name='Finance',Section__c='Part C - The Organization',Content__c='Finance and Accounting Practices',Sort_Order__c=7);
+pgText = new Page_Text__c(name='Finance',Section__c='Part C - The Organization',Content__c='Finance and Accounting Practices',Sort_Order__c=7, Version__c=1);
 lstPageText.add(pgText);
 
 //Insert related Page_Questions
