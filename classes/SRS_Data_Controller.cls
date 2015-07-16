@@ -104,7 +104,7 @@ Question JSON:
     @RemoteAction
     global static List<Page_Text__c> getAllQuestions(string reportId)
     {
-      List<Page_Text__c> pageText = [SELECT Name,Section__c,Sort_Order__c, Content__c, (Select Name, Subsection__c, Question_Text__c, Answer__c FROM Page_Question__r order by sort_order__c) FROM Page_Text__c order by Sort_Order__c];
+      List<Page_Text__c> pageText = [SELECT Name,Section__c,Sort_Order__c, Content__c, (Select Name, Subsection__c, Question_Text__c, Answer__c FROM Page_Question__r where version__c = 1 order by sort_order__c) FROM Page_Text__c where version__c = 1 order by Sort_Order__c];
       //Update answers from db
       //System.debug('Getting PageText ');
       GetAnswers(pageText, reportId);
