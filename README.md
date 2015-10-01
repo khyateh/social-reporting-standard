@@ -5,6 +5,7 @@ More details are available at http://www.social-reporting-standard.de/en/
 # SRS-SFDC
 SRS is a Salesforce application that helps create Social Reporting Standard reports inside your Salesforce Org (http://www.salesforce.com)
 
+The app can be found on appexchange at the following url: https://appexchange.salesforce.com/listingDetail?listingId=a0N30000000qFtMEAU
 
 ##Open source credits
 SRS for Salesforce has been implemented with the help of the following Open source projects.
