@@ -3,11 +3,15 @@
 <apex:stylesheet value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/css/bootstrap.min.css')}"/>
 <apex:stylesheet value="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css"/>
 <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"/>
-<apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.js"/>
 <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-sanitize.min.js"/>
-<apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" />
+<apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.js"/>
+<apex:includeScript value="//code.jquery.com/jquery-2.1.4.min.js" />
+
 <apex:includeScript value="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" />
-<apex:includeScript value="{!URLFOR($Resource.SRS, "/js/SRSSearchReports.js")}"/>
+
+<!--apex:includeScript value="{!URLFOR($Resource.SRS, "/js/SRSSearchReports.js")}"/ -->
+<apex:includeScript value="{!$Resource.SRS_Collector}"/>
+
 
 <style>
 		.input-mysize { width: 550px }

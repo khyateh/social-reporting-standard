@@ -73,14 +73,16 @@ Question JSON:
       if(sReportId != '' && lstPageText != null)
       {
         //System.debug('Getting Report');
-        SRS_Report__c report = [Select Id, Name, Description_of_Report__c, (Select Id,Section__c, Subsection__c, Content__c from Report_Details__r) from SRS_Report__c where Id = :sReportId];
+        SRS_Report__c report = [Select Id, Name, Description_of_Report__c, (Select Id,Section__c, Subsection__c, Content__c, Summary__c from Report_Details__r) from SRS_Report__c where Id = :sReportId];
         Map<String, String> mapAnswers = new Map<String, String>();
+        Map<String, String> mapSummaries = new Map<String, String>();
         for(Report_Details__c detail : report.Report_Details__r)
         {
           //Fill answer map with answers for each subsection.
           //This answer will be updated into the pageText.Page_Questions__c list
         //  System.debug('Details:: ' + EncodingUtil.urlEncode(detail.Content__c, 'UTF-8'));
           mapAnswers.put(detail.Subsection__c, detail.Content__c);
+          mapSummaries.put(detail.Subsection__c, detail.Summary__c);
         }
 
         for(Page_Text__c pageText : lstPageText)
@@ -91,6 +93,7 @@ Question JSON:
             {
               question.Answer__c = mapAnswers.get(question.Subsection__c);
               question.Answer__c = ((question.Answer__c==null)||(question.Answer__c==''))?'-':question.Answer__c;
+              question.Summary__c =  mapSummaries.get(question.Subsection__c);
             }
           }
         }
@@ -105,7 +108,8 @@ Question JSON:
     @RemoteAction
     global static List<Page_Text__c> getAllQuestions(string reportId)
     {
-      List<Page_Text__c> pageText = [SELECT Name,Section__c,Sort_Order__c, Content__c, (Select Name, Subsection__c, Question_Text__c, Answer__c FROM Page_Question__r where version__c = 1 order by sort_order__c) FROM Page_Text__c where version__c = 1 order by Sort_Order__c];
+      //Added khsrs__Summary__c
+      List<Page_Text__c> pageText = [SELECT Name,Section__c,Sort_Order__c, Content__c, (Select Name, Subsection__c, Question_Text__c, Answer__c, Summary__c FROM Page_Question__r where version__c = 1 order by sort_order__c) FROM Page_Text__c where version__c = 1 order by Sort_Order__c];
       //Update answers from db
       //System.debug('Getting PageText ');
       GetAnswers(pageText, reportId);
@@ -160,7 +164,8 @@ Question JSON:
 
           if (report != null)
           {
-            lstReportDetails =  [Select Id, Content__c, Page_Question__c, Section__c, Subsection__c from Report_Details__c where SRS_Report__c = :report.Id];
+            //Added khsrs__Summary__c
+            lstReportDetails =  [Select Id, Content__c, Page_Question__c, Section__c, Subsection__c, Summary__c from Report_Details__c where SRS_Report__c = :report.Id];
             isNewReport = false;
             if((lstReportDetails == null) || (lstReportDetails.size()==0))
             {
@@ -205,13 +210,14 @@ Question JSON:
                 //System.debug('New report details created');
                 reportDetails = new Report_Details__c();
               }
-              //System.debug('Section : ' + section);
+              System.debug('Summary : ' + answer.Summary__c);
               reportDetails.Section__c = section;
               reportDetails.Subsection__c = answer.Subsection__c;
               reportDetails.SRS_Report__c = repId;
               reportDetails.Content__c = (answer.Answer__c==null?'.':answer.Answer__c);
               reportDetails.Page_Question__c = answer.Id;
               reportDetails.Content_Type__c = 'RichText';
+              reportDetails.Summary__c = answer.Summary__c;
 
               //System.debug('Adding updated report to list :' + reportDetails);
               //System.debug(lstReportDetails);
@@ -321,7 +327,8 @@ Question JSON:
     global static List<Report_Details__c> fetchReportDetails(string reportId)
     {
       //String reportId = 'a0028000006dgh9';
-      List<Report_Details__c> reportDetails = [Select Id, Name, Section__c, Content__c,Subsection__c, Content_type__c, Content_url__c, Page_Question__r.Sort_Order__c from Report_Details__c where SRS_Report__c = :reportId order by Page_Question__r.Sort_Order__c];
+      //Added khsrs__Summary__c
+      List<Report_Details__c> reportDetails = [Select Id, Name, Section__c, Content__c,Subsection__c, Content_type__c, Content_url__c, Page_Question__r.Sort_Order__c, Summary__c from Report_Details__c where SRS_Report__c = :reportId order by Page_Question__r.Sort_Order__c];
       return reportDetails;
     }
 
@@ -332,7 +339,6 @@ Question JSON:
       SRS_Report__c report = [Select Id, Name, Description_of_report__c from SRS_Report__c where Id = :reportId];
       return report;
     }
-
 
 /*Search SRS report by name */
     @RemoteAction
@@ -368,4 +374,5 @@ Question JSON:
 
       return newReport.Id;
     }
+
 }

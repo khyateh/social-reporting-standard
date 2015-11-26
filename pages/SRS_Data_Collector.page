@@ -5,7 +5,8 @@
  <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"/>
  <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-sanitize.min.js"/>
  <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.js"/>
- <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" />
+ <apex:includeScript value="//code.jquery.com/jquery-2.1.4.min.js" />
+
 <apex:includeScript value="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" />
 
  <apex:includeScript value="{!URLFOR($Resource.Rangy, "/rangy-1.2.3/rangy-core.js")}"/>
@@ -100,11 +101,17 @@
 
                 <div >{{x.khsrs__Question_Text__c}}
                 </div>
-                <br /> <br />
+                <br/>
+                <div >
+                <label for="summary-{{x.subsection__c}}">Headline&nbsp;&nbsp;</label>
+                <input name="summary-{{x.subsection__c}}" ng-model="x.khsrs__Summary__c" class="form-control input-md" ></input>
+                </div>
+                <br />
+                <label>Details</label>
                 <text-angular name="textAngular-{{z.Id}}{{$index}}" ng-model="x.khsrs__Answer__c" ta-disabled="disabled">
 
                   </text-angular>
-                <br /> <br />
+                <br /> <hr/><br />
                 <!--    textarea ng-model="x.Page_Text__c" style="width: 100%"></textarea-->
               </div>
 
