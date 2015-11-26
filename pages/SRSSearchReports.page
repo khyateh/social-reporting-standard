@@ -9,8 +9,8 @@
 
 <apex:includeScript value="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" />
 
-<!--apex:includeScript value="{!URLFOR($Resource.SRS, "/js/SRSSearchReports.js")}"/ -->
-<apex:includeScript value="{!$Resource.SRS_Collector}"/>
+<apex:includeScript value="{!URLFOR($Resource.SRS, "/js/SRSSearchReports.js")}"/ >
+
 
 
 <style>
