@@ -27,6 +27,13 @@ lstPageText.add(pgText);
 question = new Page_Question__c(Subsection__c = '2.1 The social problem', Question_Text__c='Please describe the problem that is being/was addressed.', Answer__c = '', Sort_Order__c = 3, Page_Text__r = pgText, Version__c=1);
 lstPageQuestion.add(question);
 
+question = new Page_Question__c(Subsection__c = '2.1a Problem Causes', Question_Text__c='What are the primary causes for the problem?', Answer__c = '', Sort_Order__c = 4, Page_Text__r = pgText, Version__c=1);
+lstPageQuestion.add(question);
+
+question = new Page_Question__c(Subsection__c = '2.1b Consequences', Question_Text__c='What are the consequences arising out of the problem?', Answer__c = '', Sort_Order__c = 4, Page_Text__r = pgText, Version__c=1);
+lstPageQuestion.add(question);
+
+
 question = new Page_Question__c(Subsection__c = '2.2 Solution attempts made to date', Question_Text__c='What were the attempts made in order to solve the problem? Do include details of attempts made that were significant.', Answer__c = '', Sort_Order__c = 4, Page_Text__r = pgText, Version__c=1);
 lstPageQuestion.add(question);
 
@@ -129,6 +136,23 @@ for(Page_Question__c q : lstPageQuestion)
 }
 
 insert lstPageQuestion;
+}
+else
+{
+  Page_Text__c pgText = [Select Id from Page_text__c where name='Problem and Solution'];
+  if(pgText != null)
+  {
+  List<Page_Question__c> lstPageQuestion = new List<Page_Question__c>();
+  Page_Question__c question = new Page_Question__c(Subsection__c = '2.1a Problem Causes', Question_Text__c='What are the primary causes for the problem?', Answer__c = '', Sort_Order__c = 4, Page_Text__c = pgText.Id, Version__c=1);
+  lstPageQuestion.add(question);
+
+  question = new Page_Question__c(Subsection__c = '2.1b Consequences', Question_Text__c='What are the consequences arising out of the problem?', Answer__c = '', Sort_Order__c = 4, Page_Text__c = pgText.Id, Version__c=1);
+  lstPageQuestion.add(question);
+
+  insert lstPageQuestion;
+  }
+
+
 }
 }
 }
