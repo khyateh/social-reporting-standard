@@ -1,0 +1,140 @@
+<apex:page controller="SRS_Data_Controller" docType="html-5.0" standardStylesheets="false" sidebar="false" showHeader="true">
+
+<apex:stylesheet value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/css/bootstrap.min.css')}"/>
+<apex:stylesheet value="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css"/>
+ <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"/>
+ <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-sanitize.min.js"/>
+ <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.js"/>
+ <apex:includeScript value="//code.jquery.com/jquery-2.1.4.min.js" />
+
+<apex:includeScript value="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" />
+
+ <apex:includeScript value="{!URLFOR($Resource.Rangy, "/rangy-1.2.3/rangy-core.js")}"/>
+ <apex:includeScript value="{!URLFOR($Resource.Rangy, "/rangy-1.2.3/rangy-selectionsaverestore.js")}"/>
+ <apex:includeScript value="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular.min.js"/>
+ <apex:includeScript value="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular-sanitize.min.js"/>
+ <apex:includeScript value="{!URLFOR($Resource.SRS, "/js/SRS_Data_Collector.js")}"/>
+
+            <style>
+                .input-mysize { width: 550px }
+                .search-query {
+                padding-left: 469px;
+                background-repeat: no-repeat;
+                background-position: 562px 8px;
+                }
+
+                .ta-editor {
+                min-height: 300px;
+                height: auto;
+                overflow: auto;
+                font-family: inherit;
+                font-size: 100%;
+                border-size:2px;
+                }
+
+                .content{
+                  background-color: light-blue;
+                }
+                .logoSpacer{
+                  width: 100%;
+                }
+
+                .tabborder{
+                  border:1px;
+                  border-color:blue;
+                }
+
+                .rcorners2 {
+                    border-radius: 5px;
+                    border: 1px solid #337ab7;
+                    padding: 20px;
+                }
+
+                .red .active a,
+                .red .active a:hover {
+                    background-color: red;
+                }
+
+                .nav-pills > .active > a, .nav-pills > .active > a:hover {
+                    background-color: red;
+                }
+
+            </style>
+
+          <!-- =========== Binding Controller to Body of Page ============= -->
+            <div ng-app="SRSDataCollector" ng-controller="contrl" class="container app" >
+              <div class="page-header">
+            <br />
+              <apex:image url="{!URLFOR($Resource.SRS,'img/SRSLogo.jpg')}"/>
+            </div>
+
+            <div class="alert alert-info fade in" id="msgBoxContainer">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <div id="msgBox">.</div>
+            </div>
+
+<div>
+
+        <div class="col-md-3">
+          <ul class="nav nav-pills nav-stacked">
+            <li ng-repeat="y in items" class="{{getActive(y.khsrs__Sort_Order__c)}}"><a href="#{{y.khsrs__Sort_Order__c}}" data-toggle="pill">{{y.khsrs__Content__c}}</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-9 rcorners2">
+          <div class="tab-content">
+
+          <div ng-repeat="z in items" id="{{z.khsrs__Sort_Order__c}}" class="tab-pane fade {{getActiveTab(z.khsrs__Sort_Order__c)}}">
+            <div >
+                      <h1 class="Title" width="70%">{{z.khsrs__Section__c}}</h1>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  </div>
+                      <hr />
+
+
+                <h3>{{z.khsrs__Content__c}}</h3>
+
+
+                   <div ng-repeat="x in z.khsrs__Page_Question__r">
+
+                <div >{{x.khsrs__Question_Text__c}}
+                </div>
+                <br/>
+                <div >
+                <label for="summary-{{x.subsection__c}}">Headline&nbsp;&nbsp;</label>
+                <input name="summary-{{x.subsection__c}}" ng-model="x.khsrs__Summary__c" class="form-control input-md" ></input>
+                </div>
+                <br />
+                <label>Details</label>
+                <text-angular name="textAngular-{{z.Id}}{{$index}}" ng-model="x.khsrs__Answer__c" ta-disabled="disabled">
+
+                  </text-angular>
+                <br /> <hr/><br />
+                <!--    textarea ng-model="x.Page_Text__c" style="width: 100%"></textarea-->
+              </div>
+
+            <br /><br />
+            <div class="pagination  pull-right">
+
+                    <div >
+                      <input type="button" class="btn btn-info" ng-click="viewReport()" value="View Report" id="btnViewReport" />
+                      &nbsp;
+                      <input type="button" class="btn btn-info" ng-click="prevPage(z.khsrs__Sort_Order__c)" value="Previous" id="btnPrev"/>
+                      &nbsp;
+                      <input type="button" class="btn btn-info" ng-click="nextPage(z.khsrs__Sort_Order__c)" value="Next" id="btnNext" />
+                      &nbsp;
+
+                      <input type="button" class="btn btn-info" ng-click="saveReport()" value="Save" />
+                    </div>
+                  </div>
+                  </div>
+            </div>
+          </div>
+</div>
+    <hr />
+    <p style="text-align:center;"><small>Created by <a href="www.khyateh.com">Khyateh</a></small></p>
+  </div>
+
+</apex:page>
