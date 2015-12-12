@@ -13,21 +13,25 @@
 <apex:includeScript value="{!$Resource.SRSSummary}"/>
 <style>
     .blue-bg {
-	margin: 0 20px 0 0;
-	padding: 10px 0;
 	display: block;
 	font-size: 14px;
-	font-weight: bold;
 	text-align: center;
 	color: black;
 	border: 2px solid #000000;
   background-color: #b5d9ea;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	-webkit-box-shadow: rgba(0,0,0,0.5) 2px 2px 2px;
-	-moz-box-shadow: rgba(0,0,0,0.5) 2px 2px 2px; /* FF 3.5+ */
 }
-
+.dblue-bg {
+display: block;
+font-size: 14px;
+text-align: center;
+color: black;
+border: 2px solid #000000;
+background-color: #b2d6e8;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+}
     ol, ul {
       list-style: none;
     }
@@ -41,7 +45,9 @@
 {
 border: 2px solid #000000;
 }
-
+.white-back{
+  background-color: #FFFFFF;
+}
 .back-col-brown
 {
   background-color: #D9F5D0;
@@ -55,8 +61,11 @@ border: 2px solid #000000;
 {
   background-color: #888888;
   color: #FFFFFF;
-  font-size: 16px;
+  font-size: 14px;
+  text-align: center;
   border: 2px solid #000000;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 .green-back
 {
@@ -68,12 +77,12 @@ border: 2px solid #000000;
 <div class="bootstrap-sf1">
 
 <div ng-app="SRSReportSummary" ng-controller="summary" class="app" >
-    <div class="container border-bl">
+    <div class="container white-back border-bl">
       <div class="row">
 <div class="col-lg-3">
   <div class="pull-right">
   <span class='arrow-large' id='arrow7'></span><span class='arrow' id='arrow13'></span><br />
-  <span class='arrow-large' id='arrow8'></span><br />
+  <span class='arrow-large' id='arrow8'></span><label>Need</label><br />
   <span class='arrow-large' id='arrow9'></span>
   </div>
 </div>
@@ -97,7 +106,7 @@ border: 2px solid #000000;
 
       <div class="col-md-6">
         <div class="row text-center">
-        <span id='arrow1' class='arrow-success' data-angle='180'></span>
+        <span id='arrow1' class='arrow-inverse' data-angle='180'></span>
         </div>
         <ul class="no-header">
 
@@ -109,7 +118,7 @@ border: 2px solid #000000;
       </div>
       <div class="col-md-6">
         <div class="row text-center">
-        <span class='arrow-info' id='arrow2'></span>
+        <span class='arrow-inverse' id='arrow2'></span>
         </div>
         <ul class="no-header">
 
@@ -136,32 +145,34 @@ border: 2px solid #000000;
     <div class="row">
 
         <div class="col-md-2"></div>
-<div class = "container text-center col-md-8 back-col-brown">
- <div class="row">
-    <div class="col-sm-4 blue-bg">
+<div class = "container col-md-8 back-col-brown">
+ <div class="row ">
+
+    <div class="col-sm-4 blue-bg pull-left">
         <i class="h5">Vision</i> <br />
         <span ng-repeat="x in ReportSummary['1.1 Vision and approach']">
         {{x}} <br />
       </span> </div>
 
-    <div class="col-sm-3 back-col-white"></div>
-    <div class="col-sm-4 blue-bg">
+    <div class="col-sm-2">&nbsp;</div>
+    <div class="col-sm-4 dblue-bg pull-right">
         <i class="h5">Results (outcome/impact)</i> <br />
         <span ng-repeat="x in ReportSummary['3.3 Results achieved (outcome/impact)']">
         {{x}} <br />
       </span> </div>
 
   </div>
+
   <div class="row">
     <div class="col-sm-4">
       <div class="row text-center">
-      <span class='arrow-inverse' id='arrow3'></span>
+      <span class='arrow' id='arrow3'></span>
       </div>
     </div>
     <div class="col-sm-4"></div>
     <div class="col-sm-4">
       <div class="row text-center">
-      <span class='arrow-inverse' id='arrow4'></span>
+      <span class='arrow' id='arrow4'></span>
       </div>
 
     </div>
@@ -177,7 +188,7 @@ border: 2px solid #000000;
       </div>
     <div class="col-sm-1">
       <div class="row text-center">
-      <span class='arrow-info' id='arrow5'></span>
+      <span class='arrow' id='arrow5'></span>
       </div>
     </div>
     <div class="col-sm-3 black-white">
@@ -190,10 +201,10 @@ border: 2px solid #000000;
       </div>
     <div class="col-sm-1">
       <div class="row text-center">
-      <span class='arrow-info' id='arrow6'></span>
+      <span class='arrow' id='arrow6'></span>
       </div>
     </div>
-    <div class="col-sm-3 blue-bg">
+    <div class="col-sm-4 blue-bg">
       <i class="h5">Target Groups</i> <br />
       <span ng-repeat="x in ReportSummary['2.1c Target Groups']">
       {{x}} <br />
@@ -201,17 +212,16 @@ border: 2px solid #000000;
 
       </div>
   </div>
-<br /><br />
-  <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4"><span>Impact chain/impact logic of the offer</span></div>
-    <div class="col-sm-4"></div>
+  <div class="row text-center">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8"><span>Impact chain/impact logic of the offer</span></div>
+    <div class="col-sm-2"></div>
   </div>
-<br /> <br />
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8"><span>Society, environment</span></div>
-    <div class="col-md-2"></div>
+
+  <div class="row back-col-white text-center">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8"><span class="h3">Society, environment</span></div>
+    <div class="col-sm-2"></div>
   </div>
 
   </div>

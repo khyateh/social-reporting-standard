@@ -66,6 +66,9 @@ public static void TestGetQuestionsSaveAnswers()
 	//Test createFromTemplate
 	ID newId =  SRS_Data_Controller.createFromTemplate(reportId, 'New Report', 'NewReportDesc');
 	System.assert(newID != null);
+
+	Map<string, string[]> map1 = SRS_Data_Controller.getSummary(newId);
+	System.assert(map1 != null);
 }
 
 }

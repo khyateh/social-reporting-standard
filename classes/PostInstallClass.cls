@@ -33,6 +33,9 @@ lstPageQuestion.add(question);
 question = new Page_Question__c(Subsection__c = '2.1b Consequences', Question_Text__c='What are the consequences arising out of the problem?', Answer__c = '', Sort_Order__c = 4, Page_Text__r = pgText, Version__c=1);
 lstPageQuestion.add(question);
 
+question = new Page_Question__c(Subsection__c = '2.1c Target Groups', Question_Text__c='Who are the target group for the desired impact?', Answer__c = '', Sort_Order__c = 4, Page_Text__r = pgText, Version__c=1);
+lstPageQuestion.add(question);
+
 
 question = new Page_Question__c(Subsection__c = '2.2 Solution attempts made to date', Question_Text__c='What were the attempts made in order to solve the problem? Do include details of attempts made that were significant.', Answer__c = '', Sort_Order__c = 4, Page_Text__r = pgText, Version__c=1);
 lstPageQuestion.add(question);
@@ -147,6 +150,9 @@ else
   lstPageQuestion.add(question);
 
   question = new Page_Question__c(Subsection__c = '2.1b Consequences', Question_Text__c='What are the consequences arising out of the problem?', Answer__c = '', Sort_Order__c = 4, Page_Text__c = pgText.Id, Version__c=1);
+  lstPageQuestion.add(question);
+
+  question = new Page_Question__c(Subsection__c = '2.1c Target Groups', Question_Text__c='Who are the target group for the desired impact?', Answer__c = '', Sort_Order__c = 4, Page_Text__c = pgText.Id, Version__c=1);
   lstPageQuestion.add(question);
 
   insert lstPageQuestion;
