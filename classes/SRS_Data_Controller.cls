@@ -382,7 +382,7 @@ Question JSON:
       Map<string, string[]> summaryMap = new Map<string, string[]>();
       string[] summaries = null;
 
-      List<Report_Details__c> lstReportDetails = [select Id, khsrs__Subsection__c, khsrs__Summary__c from khsrs__Report_Details__c where ID = :reportId order by 	khsrs__Subsection__c];
+      List<Report_Details__c> lstReportDetails = [select Id, khsrs__Subsection__c, khsrs__Summary__c from khsrs__Report_Details__c where khsrs__SRS_Report__c = :reportId order by 	khsrs__Subsection__c];
 
       if(lstReportDetails != null)
       {
@@ -397,7 +397,7 @@ Question JSON:
         }
       }
 
-
+      //System.debug('SummaryMap :: ' + summaryMap);
       return summaryMap;
     }
 

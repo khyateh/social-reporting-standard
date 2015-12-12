@@ -1,8 +1,9 @@
 <apex:page showHeader="true" sidebar="false" controller="SRS_Data_Controller">
-<apex:stylesheet value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/css/bootstrap.min.css')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/css/bootstrap.css')}"/>
 <apex:stylesheet value="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css"/>
 
 <apex:form >
+<div class="bootstrap-sf1">
 <div class="container" >
   <div class="page-header">
     <apex:image url="{!URLFOR($Resource.SRS,'img/SRSLogo.jpg')}"/>
@@ -39,6 +40,7 @@ Description of report&nbsp;&nbsp;
 <hr />
 <p style="text-align:center;"><small>Created by <a href="www.khyateh.com">Khyateh</a></small></p>
 
+</div>
 </div>
 </apex:form>
 </apex:page>

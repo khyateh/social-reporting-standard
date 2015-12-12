@@ -1,5 +1,5 @@
 <apex:page showHeader="true" sidebar="false">
-<apex:stylesheet value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/css/bootstrap.min.css')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/css/bootstrap.css')}"/>
 <apex:stylesheet value="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css"/>
 <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" />
 <apex:includeScript value="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" />
@@ -7,6 +7,7 @@
 .tab { margin-left: 40px; }
 .pg { margin-left: 40px; }
 </style>
+<div class="bootstrap-sf1">
 	<div class="visualstrap container page-header">
 		<apex:image url="{!URLFOR($Resource.SRS,'img/SRSLogo.jpg')}"/>
 		<br /><br />
@@ -67,5 +68,6 @@
 </div>
 <hr />
 <p style="text-align:center;"><small>Powered by <a href="www.ashoka.org">Ashoka</a> and <a href="www.khyateh.com">Khyateh</a></small></p>
+</div>
 </div>
 </apex:page>

@@ -1,16 +1,249 @@
 <apex:page controller="SRS_Data_Controller" docType="html-5.0" standardStylesheets="false" sidebar="false" showHeader="true">
 
-<apex:stylesheet value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/css/inspinia-esc.css')}"/>
+
+<apex:stylesheet value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/css/bootstrap.css')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/css/bootstrap-arrows.css')}"/>
 <apex:stylesheet value="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css"/>
 <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"/>
 <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-sanitize.min.js"/>
 <apex:includeScript value="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.js"/>
 <apex:includeScript value="//code.jquery.com/jquery-2.1.4.min.js" />
+<apex:includeScript value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/js/bootstrap-arrows.js')}"/>
 
-<apex:includeScript value="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" />
+<apex:includeScript value="{!$Resource.SRSSummary}"/>
+<style>
+    .blue-bg {
+	margin: 0 20px 0 0;
+	padding: 10px 0;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	color: black;
+	border: 2px solid #000000;
+  background-color: #b5d9ea;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-webkit-box-shadow: rgba(0,0,0,0.5) 2px 2px 2px;
+	-moz-box-shadow: rgba(0,0,0,0.5) 2px 2px 2px; /* FF 3.5+ */
+}
 
-<apex:includeScript value="{!URLFOR($Resource.SRS, "/js/SRSSearchReports.js")}"/>
+    ol, ul {
+      list-style: none;
+    }
+
+    .white {
+      font-size : 700px;
+      position: relative;
+      z-index: -5;
+    }
+.border-bl
+{
+border: 2px solid #000000;
+}
+
+.back-col-brown
+{
+  background-color: #D9F5D0;
+}
+
+.back-col-white
+{
+  background-color: #FFFFFF;
+}
+.black-white
+{
+  background-color: #888888;
+  color: #FFFFFF;
+  font-size: 16px;
+  border: 2px solid #000000;
+}
+.green-back
+{
+  background-color: #D9F5D0;
+  font-size: 16px;
+}
+</style>
+
+<div class="bootstrap-sf1">
+
+<div ng-app="SRSReportSummary" ng-controller="summary" class="app" >
+    <div class="container border-bl">
+      <div class="row">
+<div class="col-lg-3">
+  <div class="pull-right">
+  <span class='arrow-large' id='arrow7'></span><span class='arrow' id='arrow13'></span><br />
+  <span class='arrow-large' id='arrow8'></span><br />
+  <span class='arrow-large' id='arrow9'></span>
+  </div>
+</div>
+<div class="col-lg-6">
+      <div class="row">
+        <div class="col-md-1">
+
+        </div>
+
+        <div class="col-md-10 black-white text-center">
+
+          <i class="h5">Social Problem</i> <br />
+        <div class="title">{{ReportSummary["2.1 The social problem"][0]}}</div>
+
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+      <div class="row"><br/><br/></div>
+
+      <div class="row">
+
+      <div class="col-md-6">
+        <div class="row text-center">
+        <span id='arrow1' class='arrow-success' data-angle='180'></span>
+        </div>
+        <ul class="no-header">
+
+        <li class="text-center"><i class="h5">Consequences</i></li>
+          <div ng-repeat="x in ReportSummary['2.1b Consequences']" >
+          <li><div class="black-white">{{x}}</div></li>
+        </div>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="row text-center">
+        <span class='arrow-info' id='arrow2'></span>
+        </div>
+        <ul class="no-header">
+
+          <li class="text-center"><i class="h5">Causes</i></li>
+          <div ng-repeat="x in ReportSummary['2.1a Problem Causes']" class="black-white">
+          <li><div >{{x}}</div></li>
+        </div>
+        </ul>
+      </div>
+
+    </div>
+    <div class="row"><br/><br/></div>
+  </div>
+
+<div class="col-lg-3">
+  <div class="">
+    <span class='arrow' id='arrow14'></span>
+  <span class='arrow-large' id='arrow10'></span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span class='arrow-large' id='arrow11'></span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span class='arrow-large' id='arrow12'></span>
+  </div>
+</div>
+</div>
+    <div class="row">
+
+        <div class="col-md-2"></div>
+<div class = "container text-center col-md-8 back-col-brown">
+ <div class="row">
+    <div class="col-sm-4 blue-bg">
+        <i class="h5">Vision</i> <br />
+        <span ng-repeat="x in ReportSummary['1.1 Vision and approach']">
+        {{x}} <br />
+      </span> </div>
+
+    <div class="col-sm-3 back-col-white"></div>
+    <div class="col-sm-4 blue-bg">
+        <i class="h5">Results (outcome/impact)</i> <br />
+        <span ng-repeat="x in ReportSummary['3.3 Results achieved (outcome/impact)']">
+        {{x}} <br />
+      </span> </div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="row text-center">
+      <span class='arrow-inverse' id='arrow3'></span>
+      </div>
+    </div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div class="row text-center">
+      <span class='arrow-inverse' id='arrow4'></span>
+      </div>
+
+    </div>
+  </div>
+  <br /><br />
+  <div class="row">
+    <div class="col-sm-3 black-white">
+      <i class="h5">Input</i> <br />
+      <span ng-repeat="x in ReportSummary['3.1 Resources used (input)']">
+      {{x}} <br />
+    </span>
+
+      </div>
+    <div class="col-sm-1">
+      <div class="row text-center">
+      <span class='arrow-info' id='arrow5'></span>
+      </div>
+    </div>
+    <div class="col-sm-3 black-white">
+      <i class="h5">Output</i> <br />
+      <span ng-repeat="x in ReportSummary['3.2 Work performed (output)']">
+      {{x}} <br />
+    </span>
 
 
+      </div>
+    <div class="col-sm-1">
+      <div class="row text-center">
+      <span class='arrow-info' id='arrow6'></span>
+      </div>
+    </div>
+    <div class="col-sm-3 blue-bg">
+      <i class="h5">Target Groups</i> <br />
+      <span ng-repeat="x in ReportSummary['2.1c Target Groups']">
+      {{x}} <br />
+    </span>
 
+      </div>
+  </div>
+<br /><br />
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4"><span>Impact chain/impact logic of the offer</span></div>
+    <div class="col-sm-4"></div>
+  </div>
+<br /> <br />
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8"><span>Society, environment</span></div>
+    <div class="col-md-2"></div>
+  </div>
+
+  </div>
+
+
+  <div class="col-md-2"></div>
+
+    </div>
+
+  </div>
+</div>
+</div>
+<script language="javascript">
+
+function setAngle(ele, angle)
+{
+  //var element = document.getElementById(ele);
+$("[id="+ele+"]").css('-webkit-transform','rotate('+angle+'deg)');
+$("[id="+ele+"]").css('-moz-transform','rotate('+angle+'deg)');
+$("[id="+ele+"]").css('-o-transform','rotate('+angle+'deg)');
+$("[id="+ele+"]").css('-ms-transform','rotate('+angle+'deg)');
+$("[id="+ele+"]").css('transform','rotate('+angle+'deg)');
+}
+
+setAngle('arrow1', 180);
+setAngle('arrow3', 180);
+setAngle('arrow5', 90);
+setAngle('arrow6', 90);
+setAngle('arrow7', 180);
+setAngle('arrow8', 180);
+setAngle('arrow9', 180);
+setAngle('arrow13', -90);
+setAngle('arrow14', -90);
+</script>
 </apex:page>
