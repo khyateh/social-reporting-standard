@@ -63,7 +63,8 @@
 					<div class="hidden-print">
 
 									<div class="col-md-12">
-											<button style="align:center" ng-click="printPage()">Print Report</button>
+											<button style="align:center" ng-click="printPage()">Print Report</button>&nbsp; &nbsp;&nbsp;
+											<button style="align:center" ng-click="editReport()">Edit Report</button>
 									</div>
 
 					</div>

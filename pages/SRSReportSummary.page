@@ -1,4 +1,4 @@
-<apex:page controller="SRS_Data_Controller" docType="html-5.0" standardStylesheets="false" sidebar="false" showHeader="true">
+<apex:page controller="SRS_Data_Controller" docType="html-5.0" standardStylesheets="false" sidebar="false" showHeader="false">
 
 
 <apex:stylesheet value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/css/bootstrap.css')}"/>
@@ -10,7 +10,7 @@
 <apex:includeScript value="//code.jquery.com/jquery-2.1.4.min.js" />
 <apex:includeScript value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/js/bootstrap-arrows.js')}"/>
 
-<apex:includeScript value="{!$Resource.SRSSummary}"/>
+<apex:includeScript value="{!URLFOR($Resource.SRS, "/js/SRSReportSummary.js")}"/>
 <style>
     .blue-bg {
 	display: block;
@@ -77,7 +77,13 @@ border: 2px solid #000000;
 <div class="bootstrap-sf1">
 
 <div ng-app="SRSReportSummary" ng-controller="summary" class="app" >
+
+  <div class="container white-back border-bl text-center">
+  <h1>{{Report.Name}}</h1>
+</div>
+
     <div class="container white-back border-bl">
+    <br /> <br />
       <div class="row">
 <div class="col-lg-3">
   <div class="pull-right">
@@ -220,7 +226,7 @@ border: 2px solid #000000;
 
   <div class="row back-col-white text-center">
     <div class="col-sm-2"></div>
-    <div class="col-sm-8"><span class="h3">Society, environment</span></div>
+    <div class="col-sm-8"><span class="h3"><br /><br />Society, environment</span></div>
     <div class="col-sm-2"></div>
   </div>
 
@@ -231,6 +237,12 @@ border: 2px solid #000000;
 
     </div>
 
+  </div>
+  <div class="container white-back border-bl hidden-print">
+    <div class="col-md-10"></div>
+    <div class="col-md-2">
+      <button style="align:center" ng-click="editReport()">Edit Report</button>
+    </div>
   </div>
 </div>
 </div>
