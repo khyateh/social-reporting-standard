@@ -1,6 +1,7 @@
 <apex:page showHeader="true" sidebar="false" controller="SRS_Data_Controller">
 <apex:stylesheet value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/css/bootstrap.css')}"/>
 <apex:stylesheet value="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css"/>
+ <apex:includeScript value="{!URLFOR($Resource.BSZip, "/bootstrap-3.3.5-dist/js/bootstrap.js")}"/>
 
 <apex:form >
 <div class="bootstrap-sf1">
