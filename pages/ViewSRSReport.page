@@ -32,8 +32,12 @@
 	font-size: 20px;
 }
 
+.white-bg {
+	background-color: #FFFFFF;
+}
+
 </style>
-<div class="bootstrap-sf1">
+<div class="bootstrap-sf1 white-bg">
 <!-- =========== Binding Controller to Body of Page ============= -->
 <div ng-app="SRSReportGen" ng-controller="reportController" class="container app" >
 	<div class="page-header">
@@ -51,6 +55,8 @@
 <div class="page-title bold" ng-bind="getSection(x.khsrs__Section__c)"><br /><br /></div>
 
 <div><h3>{{x.khsrs__Subsection__c}}</h3></div>
+	<br />
+	<div class="well white-bg" ng-show="x.khsrs__Summary__c.length"><b>{{x.khsrs__Summary__c}}</b></div>
 	<br />
 <p ng-bind-html="decode(x.khsrs__Content__c)" />
 	<br />
