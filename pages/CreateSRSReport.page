@@ -1,4 +1,4 @@
-<apex:page showHeader="true" sidebar="false" controller="SRS_Data_Controller">
+<apex:page showHeader="true" sidebar="false" standardController="SRS_Report__c" extensions="CreateSRSReportExtension">
 <apex:stylesheet value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/css/bootstrap.css')}"/>
 <apex:stylesheet value="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css"/>
  <apex:includeScript value="{!URLFOR($Resource.BSZip, "/bootstrap-3.3.5-dist/js/bootstrap.js")}"/>
@@ -21,7 +21,7 @@
 Name of the report
 </td>
 <td>
-  <apex:inputfield id="reportName" value="{!SRSReport.Name}" style="width:500px"/> <br /><br />
+  <apex:inputfield id="reportName" value="{!SRS_Report__c.Name}" style="width:500px"/> <br /><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </td>
 </tr>
@@ -30,12 +30,12 @@ Name of the report
 Description of report&nbsp;&nbsp;
 </td>
 <td>
-  <apex:inputfield id="reportDesc" value="{!SRSReport.Description_of_Report__c}" style="width:500px; height:100px" />
+  <apex:inputfield id="reportDesc" value="{!SRS_Report__c.Description_of_Report__c}" style="width:500px; height:100px" />
 </td>
 </tr>
 </table>
   <apex:pageBlockButtons location="bottom">
-  <apex:commandButton action="{!CreateSRSReport}" value="Create Report" />
+  <apex:commandButton action="{!saveAndEdit}" value="Create Report" />
 </apex:pageBlockButtons>
 </apex:pageBlock>
 <hr />

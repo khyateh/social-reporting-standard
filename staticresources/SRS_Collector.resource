@@ -1,74 +1,175 @@
 <!-- Name your application -->
-var myapp = angular.module("SRSReportSearchApp", ["ngRoute", "ngSanitize"]);
+var myapp = angular.module("SRSDataCollector", ["ngRoute", "textAngular",
+  "ngSanitize"
+]);
+
 
 <!-- Define Controller  -->
-var reportController = myapp.controller("reportSearchController", function(
-  $scope, $location, $sce, $window) {
+var contrl = myapp.controller("contrl", function($scope, $location, $sce,
+  $interval, $window) {
   $scope.currentPage = 0;
   $scope.reportName = "";
   $scope.reportDesc = "";
-  $scope.reportId = "";
+  $scope.reportId = $location.absUrl().split('ReportId=')[1].split('#')[0];
   $scope.pagedItems = "";
-  $scope.searchString = "";
-
-  $scope.setTemplateId = function(id) {
-    $scope.reportId = id;
-    console.log('Template applied: ' + $scope.reportId);
+  $scope.templateName = "";
+  $scope.summary = "";
+ $scope.items = "";
+$scope.page = $location.absUrl().split('ReportId=')[1].split('#/')[1];;
+console.log("Page: "+ $scope.page);
+  $scope.getActive = function(index) {
+	if($scope.page != null && $scope.page > 0)
+	{
+		if(index == $scope.page)
+		{
+		     return ' active';
+		}
+	}
+	else
+	{ 
+		if (index == '1')
+	      	return ' active';
+	}
   };
 
-  $scope.searchReports = function() {
+  $scope.getActiveTab = function(index) {
+	if($scope.page != null && $scope.page > 0)
+	{
+		if(index == $scope.page)
+		{
+		     return ' in active';
+		}
+	}
+	else
+	{ 
+		if (index == '1')
+	      	return ' active';
+	}    
+  };
 
-    khsrs.SRS_Data_Controller.searchReports($scope.searchString,
+
+  $scope.getQuestions = function() {
+    khsrs.SRS_Data_Controller.getAllQuestions(
+      $scope.reportId,
       function(result, event) {
-        $('#login-error').innerHtml = "Hello";
-        $('#login-error').show();
-
         if (event.status) {
           $scope.items = result;
           $scope.$apply();
+
+          if ($scope.items != null) {
+            $scope.pagedItems = $scope.items[$scope.currentPage];
+            $scope.$apply();
+          }
         } else if (event.type == "exception") {
-          showInfo(event.message, true);
+          alert(event.message);
         }
+      }, {
+        escape: false
       });
   };
 
 
-  $scope.searchReports();
-
-  $scope.createFromTemplate = function() {
-    khsrs.SRS_Data_Controller.createFromTemplate($scope.reportId, $scope
-      .reportName, $scope.reportDesc,
+  $scope.getSummary = function() {
+    khsrs.SRS_Data_Controller.fetchReportSummaryById(
+      $scope.reportId,
       function(result, event) {
         if (event.status) {
-          //Redirect to SRS Data Collector
-          $scope.items = result;
+          $scope.summary = result;
           $scope.$apply();
-          $window.location.href = "/apex/SRS_Data_Collector?ReportId=" +
-            result;
+          console.log($scope.summary);
+
         } else if (event.type == "exception") {
-          console.log(event.message);
+          alert(event.message);
         }
+      }, {
+        escape: false
       });
+  };
+
+
+
+  $scope.saveReport = function() {
+
+    var sJson = angular.toJson($scope.items);
+    khsrs.SRS_Data_Controller.saveAnswers(sJson, $scope.reportName,
+      $scope.reportId, $scope.reportDesc,
+      function(result, event) {
+        if (event.status) {
+          console.log("Report saved");
+          $scope.alertMe("Report saved");
+        } else if (event.type == "exception") {
+          $scope.alertMe(event.message);
+        }
+      }
+    )
+  };
+
+  $scope.range = function(start, end) {
+    var ret = [];
+    if (!end) {
+      end = start;
+      start = 0;
+    }
+    for (var i = start; i < end; i++) {
+      ret.push(i);
+    }
+    return ret;
+  };
+
+  $scope.prevPage = function(id) {
+    var nextId = id - 1;
+    if (nextId >= 1) {
+      $('#btnNext').disabled = false;
+      $('[href=#' + nextId + ']').tab('show');
+    } else {
+      $('#btnPrev').disabled = true;
+    }
+  };
+
+  $scope.nextPage = function(id) {
+    //    $scope.saveReport();
+    var nextId = id + 1;
+    if (nextId <= $scope.items.length) {
+      $('#btnPrev').disabled = false;
+      $('[href=#' + nextId + ']').tab('show');
+    } else {
+      $('#btnNext').disabled = true;
+      //$('#btnViewReport').style.visibility = 'visible';
+    }
+  };
+
+  $scope.viewReport = function() {
+    $window.location.href = "/apex/ViewSRSReport?ReportId=" + $scope.reportId;
   };
 
   $scope.decode = function(html) {
-    var txt = document.createElement("textarea");
+    var txt = document.activeElement();
     txt.innerHTML = html;
     return txt.value;
   };
+
+  $scope.alertMe = function(msg) {
+
+    document.getElementById("msgBox").innerHTML = msg;
+    $("#msgBoxContainer").show();
+
+  };
+
+
+  $scope.getQuestions();
+  //  $scope.getSummary();
+  $("#msgBoxContainer").hide();
+
+  var autoSave = $interval($scope.saveReport, 120000);
+
 });
 
-function showInfo(msg, isError) {
-  alert($("#srsMsg"));
-  //var el = document.getElementById("srsMsg");
-  $("#srsMsg").innerHTML = "<br/>" + msg + "<br/>";
 
-};
 
-$('.alert .close').on('click', function(e) {
-  $(this).parent().hide();
-});
-
-$.ready(function() {
-  console.log("Loaded")
+myapp.filter('unsafe', function($sce) {
+  return function(val) {
+    val = $sce.trustAsHtml(val);
+    alert(val);
+    return val;
+  };
 });

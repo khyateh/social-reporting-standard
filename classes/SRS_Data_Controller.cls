@@ -210,7 +210,7 @@ Question JSON:
                 //System.debug('New report details created');
                 reportDetails = new Report_Details__c();
               }
-              System.debug('Summary : ' + answer.Summary__c);
+              //System.debug('Summary : ' + answer.Summary__c);
               reportDetails.Section__c = section;
               reportDetails.Subsection__c = answer.Subsection__c;
               reportDetails.SRS_Report__c = repId;
@@ -248,7 +248,7 @@ Question JSON:
         return null;
       }
 
-      System.debug('JSOn To Parse : ' + jsonToParse);
+      //System.debug('JSOn To Parse : ' + jsonToParse);
       System.JSONParser parser = JSON.createParser(jsonToParse);
       List<Page_Question__c> lstPageQuestions = new List<Page_Question__c>();
       List<Page_Question__c> lstQuestions = new List<Page_Question__c>();

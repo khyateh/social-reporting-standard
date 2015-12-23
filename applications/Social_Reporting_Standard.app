@@ -8,7 +8,4 @@
     <tab>Search_Reports</tab>
     <tab>Create_New_Report</tab>
     <tab>SRS_Report__c</tab>
-    <tab>Report_Details__c</tab>
-    <tab>Page_Question__c</tab>
-    <tab>Page_Text__c</tab>
 </CustomApplication>

@@ -44,249 +44,130 @@
         <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
+    <description>Holds the summary details of each subsection of the report.</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
-    <enableReports>true</enableReports>
+    <enableReports>false</enableReports>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
-        <fullName>Content_Type__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Content Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>RichText</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>URL</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Binary</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>Content_URL__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Content URL</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Url</type>
-    </fields>
-    <fields>
-        <fullName>Content__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Content</label>
-        <length>32768</length>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>25</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Page_Question__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <label>Page Question</label>
-        <referenceTo>Page_Question__c</referenceTo>
-        <relationshipLabel>Report Details</relationshipLabel>
-        <relationshipName>Page_Question</relationshipName>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>SRS_Report__c</fullName>
-        <deprecated>false</deprecated>
+        <description>Report for which the summary is generated</description>
         <externalId>false</externalId>
         <label>SRS Report</label>
         <referenceTo>SRS_Report__c</referenceTo>
-        <relationshipLabel>Report Details</relationshipLabel>
-        <relationshipName>Report_Details</relationshipName>
+        <relationshipLabel>Report Summary</relationshipLabel>
+        <relationshipName>Report_Summary</relationshipName>
         <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
-        <fullName>Section__c</fullName>
-        <deprecated>false</deprecated>
-        <description>Report section</description>
-        <externalId>false</externalId>
-        <label>Section</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Section A</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Section B</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Section C</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>Subsection__c</fullName>
-        <deprecated>false</deprecated>
+        <fullName>SubSection__c</fullName>
         <externalId>false</externalId>
         <label>Subsection</label>
         <picklist>
-            <controllingField>Section__c</controllingField>
             <picklistValues>
                 <fullName>1.1 Vision and approach</fullName>
-                <controllingFieldValues>Section A</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>1.2 Scope of the report</fullName>
-                <controllingFieldValues>Section A</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>2.1 The social problem</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>2.1a Problem Causes</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>2.1b Consequences</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>2.1c Target Groups</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>2.2 Solution attempts made to date</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>2.3 The solution</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>3.1 Resources used (input)</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>3.2 Work performed (output)</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>3.3 Results achieved (outcome/impact)</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>3.4 Presenting resources, work performed and results during the reporting period</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>3.5 Provisions taken for the accompanying evaluation and qualitiy assurance</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>3.6 Previous year comparison: Objectives achieved, learning experience and success</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>4.1 Planning and targets</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>4.2 Influence factors: chances and risks</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>5.1 Organisational structure</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>5.2 Introduction of the participating individuals</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>5.3 Partnerships, cooperations and networks</fullName>
-                <controllingFieldValues>Section B</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>6.1 General information about the organisation</fullName>
-                <controllingFieldValues>Section C</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>6.2 Governance of the organisation</fullName>
-                <controllingFieldValues>Section C</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>6.3 Ownership structure, memberships and associated organisations</fullName>
-                <controllingFieldValues>Section C</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>6.4 Environmental and social profile</fullName>
-                <controllingFieldValues>Section C</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>7.1 Bookkeeping and accounting</fullName>
-                <controllingFieldValues>Section C</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>7.2 Asset statement</fullName>
-                <controllingFieldValues>Section C</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>7.3 Income and expenditure</fullName>
-                <controllingFieldValues>Section C</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>7.4 Financial situation and planning</fullName>
-                <controllingFieldValues>Section C</controllingFieldValues>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -303,21 +184,12 @@
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
     </fields>
-    <label>Report Detail</label>
-    <listViews>
-        <fullName>All</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
+    <label>Report Summary</label>
     <nameField>
-        <label>Report Details Name</label>
+        <label>Report_Summary Name</label>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Report Details</pluralLabel>
-    <searchLayouts>
-        <customTabListAdditionalFields>Content__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Section__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Subsection__c</customTabListAdditionalFields>
-    </searchLayouts>
+    <pluralLabel>Report Summary</pluralLabel>
+    <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
 </CustomObject>

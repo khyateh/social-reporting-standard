@@ -6,26 +6,62 @@
     </types>
     <types>
         <members>*</members>
-        <name>ApexComponent</name>
-    </types>
-    <types>
-        <members>*</members>
         <name>ApexPage</name>
     </types>
     <types>
-        <members>Social_Reporting_Standard</members>
+        <members>*</members>
         <name>CustomApplication</name>
     </types>
     <types>
-        <members>Page_Question__c</members>
-        <members>Page_Text__c</members>
-        <members>Report_Details__c</members>
-        <members>SRS_Report__c</members>
+        <members>Account</members>
+        <members>AccountCleanInfo</members>
+        <members>AccountContactRole</members>
+        <members>Activity</members>
+        <members>Asset</members>
+        <members>Campaign</members>
+        <members>CampaignMember</members>
+        <members>Case</members>
+        <members>CaseContactRole</members>
+        <members>Contact</members>
+        <members>ContactCleanInfo</members>
+        <members>ContentVersion</members>
+        <members>Contract</members>
+        <members>ContractContactRole</members>
+        <members>DandBCompany</members>
+        <members>DuplicateRecordItem</members>
+        <members>DuplicateRecordSet</members>
+        <members>Event</members>
+        <members>FeedItem</members>
+        <members>ForecastingCategoryMapping</members>
+        <members>Idea</members>
+        <members>Lead</members>
+        <members>LeadCleanInfo</members>
+        <members>Macro</members>
+        <members>MacroAction</members>
+        <members>MacroInstruction</members>
+        <members>Opportunity</members>
+        <members>OpportunityCompetitor</members>
+        <members>OpportunityContactRole</members>
+        <members>OpportunityLineItem</members>
+        <members>Order</members>
+        <members>OrderItem</members>
+        <members>PartnerRole</members>
+        <members>Pricebook2</members>
+        <members>PricebookEntry</members>
+        <members>Product2</members>
+        <members>Report_Summary__c</members>
+        <members>Site</members>
+        <members>SocialPersona</members>
+        <members>Solution</members>
+        <members>StreamingChannel</members>
+        <members>Task</members>
+        <members>User</members>
+        <members>UserProvisioningRequest</members>
         <name>CustomObject</name>
     </types>
     <types>
         <members>*</members>
         <name>StaticResource</name>
     </types>
-    <version>32.0</version>
+    <version>34.0</version>
 </Package>
