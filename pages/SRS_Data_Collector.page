@@ -82,7 +82,7 @@
 
         <div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
-            <li ng-repeat="y in items" id="{{y.khsrs__Sort_Order__c}}" class="{{getActive(y.khsrs__Sort_Order__c)}}"><a href="#{{y.khsrs__Sort_Order__c}}" data-toggle="pill">{{y.khsrs__Content__c}}</a></li>
+            <li ng-repeat="y in items" class="{{getActive(y.khsrs__Sort_Order__c)}}"><a href="#{{y.khsrs__Sort_Order__c}}" data-toggle="pill">{{y.khsrs__Content__c}}</a></li>
           </ul>
         </div>
 
@@ -124,6 +124,8 @@
             <div class="pagination  pull-right">
 
                     <div >
+                      <input type="button" class="btn btn-info" ng-click="viewSummary()" value="Report Summary" id="btnReportSummary" />
+                      &nbsp;
                       <input type="button" class="btn btn-info" ng-click="viewReport()" value="View Report" id="btnViewReport" />
                       &nbsp;
                       <input type="button" class="btn btn-info" ng-click="prevPage(z.khsrs__Sort_Order__c)" value="Previous" id="btnPrev"/>
@@ -143,4 +145,5 @@
   </div>
 </div>
 <apex:includeScript value="{!URLFOR($Resource.SRS, "/js/SRS_Data_Collector.js")}"/>
+
 </apex:page>

@@ -1,4 +1,4 @@
-<apex:page controller="SRS_Data_Controller" docType="html-5.0" standardStylesheets="false" sidebar="false" showHeader="true">
+<apex:page controller="SRS_Data_Controller" docType="html-5.0" standardStylesheets="false" sidebar="true" showHeader="true">
 
 <apex:stylesheet value="{!URLFOR($Resource.BSZip, '/bootstrap-3.3.5-dist/css/bootstrap.css')}"/>
 <apex:stylesheet value="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css"/>
@@ -69,15 +69,15 @@
 		</tr></thead>
 		<tbody>
 	<tr ng-repeat="x in items">
-		<td width="25%">
+		<td width="15%">
 {{x.Name}}
 </td>
 
-<td width="40%">
+<td width="15%">
 {{x.Description_of_Report__c}}
 </td>
-<td width="35%">
-<a href="/apex/SRS_Data_Collector?ReportId={{x.Id}}#/1">Edit&nbsp;<span class="glyphicon glyphicon-edit"/></a>
+<td width="20%">
+<a href="/apex/SRS_Data_Collector?ReportId={{x.Id}}&tab=1">Edit&nbsp;<span class="glyphicon glyphicon-edit"/></a>
 &nbsp;&nbsp;
 <a target="_blank" href="/apex/SRSReportSummary?ReportId={{x.Id}}">Summary&nbsp;<span class="glyphicon glyphicon-book"/></a>
 &nbsp;&nbsp;
