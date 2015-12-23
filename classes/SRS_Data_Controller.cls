@@ -126,7 +126,7 @@ Question JSON:
       //Create report and redirect to data collector view
       insert SRSReport;
       //System.debug('New report created : ' + SRSReport.Id);
-      PageReference dataCollectionPage = new PageReference('/apex/SRS_Data_Collector?ReportId=' + SRSReport.Id);
+      PageReference dataCollectionPage = new PageReference('/apex/SRS_Data_Collector?ReportId=' + SRSReport.Id+'#/1');
       dataCollectionPage.setRedirect(true);
       return  dataCollectionPage;
     }

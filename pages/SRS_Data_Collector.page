@@ -16,7 +16,7 @@
  <apex:includeScript value="{!URLFOR($Resource.Rangy, "/rangy-1.2.3/rangy-selectionsaverestore.js")}"/>
  <apex:includeScript value="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular.min.js"/>
  <apex:includeScript value="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular-sanitize.min.js"/>
- <apex:includeScript value="{!URLFOR($Resource.SRS, "/js/SRS_Data_Collector.js")}"/>
+
 
  <apex:includeScript value="{!URLFOR($Resource.BSZip, "/bootstrap-3.3.5-dist/js/bootstrap.js")}"/>
 
@@ -142,6 +142,5 @@
     <p style="text-align:center;"><small>Created by <a href="www.khyateh.com">Khyateh</a></small></p>
   </div>
 </div>
-
-<!--apex:includeScript value="{!URLFOR($Resource.SRS_Collector)}"/ -->
+<apex:includeScript value="{!URLFOR($Resource.SRS, "/js/SRS_Data_Collector.js")}"/>
 </apex:page>

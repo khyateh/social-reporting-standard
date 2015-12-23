@@ -116,7 +116,7 @@ border: 2px solid #000000;
         </div>
         <ul class="no-header">
 
-        <li class="text-center"><i class="h5">Consequences</i></li>
+        <li class="text-center"><a href="/apex/SRS_Data_Collector?ReportId={{reportId}}#/2"  target="_blank"><i class="h5">Consequences</i></a></li>
           <div ng-repeat="x in ReportSummary['2.1b Consequences']" >
           <li><div class="black-white">{{x}}</div></li>
         </div>
@@ -128,7 +128,7 @@ border: 2px solid #000000;
         </div>
         <ul class="no-header">
 
-          <li class="text-center"><i class="h5">Causes</i></li>
+          <li class="text-center"><a href="/apex/SRS_Data_Collector?ReportId={{reportId}}#/2"  target="_blank"><i class="h5">Causes</i></a></li>
           <div ng-repeat="x in ReportSummary['2.1a Problem Causes']" class="black-white">
           <li><div >{{x}}</div></li>
         </div>
@@ -155,14 +155,14 @@ border: 2px solid #000000;
  <div class="row ">
 
     <div class="col-sm-4 blue-bg pull-left">
-        <i class="h5">Vision</i> <br />
+        <a href="/apex/SRS_Data_Collector?ReportId={{reportId}}#/1"  target="_blank"><i class="h5">Vision</i></a> <br />
         <span ng-repeat="x in ReportSummary['1.1 Vision and approach']">
         {{x}} <br />
       </span> </div>
 
     <div class="col-sm-2">&nbsp;</div>
     <div class="col-sm-4 dblue-bg pull-right">
-        <i class="h5">Results (outcome/impact)</i> <br />
+        <a href="/apex/SRS_Data_Collector?ReportId={{reportId}}#/2" target="_blank"><i class="h5">Results (outcome/impact)</i></a> <br />
         <span ng-repeat="x in ReportSummary['3.3 Results achieved (outcome/impact)']">
         {{x}} <br />
       </span> </div>
@@ -186,7 +186,7 @@ border: 2px solid #000000;
   <br /><br />
   <div class="row">
     <div class="col-sm-3 black-white">
-      <i class="h5">Input</i> <br />
+      <a href="/apex/SRS_Data_Collector?ReportId={{reportId}}#/3" target ="_blank"><i class="h5">Input</i> </a><br />
       <span ng-repeat="x in ReportSummary['3.1 Resources used (input)']">
       {{x}} <br />
     </span>
@@ -198,7 +198,7 @@ border: 2px solid #000000;
       </div>
     </div>
     <div class="col-sm-3 black-white">
-      <i class="h5">Output</i> <br />
+      <a href="/apex/SRS_Data_Collector?ReportId={{reportId}}#/2" target="_blank"><i class="h5">Output</i></a> <br />
       <span ng-repeat="x in ReportSummary['3.2 Work performed (output)']">
       {{x}} <br />
     </span>
@@ -211,7 +211,7 @@ border: 2px solid #000000;
       </div>
     </div>
     <div class="col-sm-4 blue-bg">
-      <i class="h5">Target Groups</i> <br />
+      <a href="/apex/SRS_Data_Collector?ReportId={{reportId}}#/2" target="_blank"><i class="h5">Target Groups</i></a> <br />
       <span ng-repeat="x in ReportSummary['2.1c Target Groups']">
       {{x}} <br />
     </span>
